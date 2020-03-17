@@ -1,0 +1,22 @@
+.landing {
+    header {
+        background-color: $black;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+    }
+
+    .landing-info {
+        @include flex-col-centered();
+        color: $white
+    }
+
+    h1 {
+        font-size: 7rem;
+    }
+
+    p {
+        font-size: 2rem;
+        margin: 10px 0;
+    }
+}

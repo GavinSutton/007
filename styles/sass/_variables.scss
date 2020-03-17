@@ -1,0 +1,19 @@
+// $primaryColor: #C3DAB7;
+$white: #FFFFFF;
+$black: #333333;
+// $lightGrey: #F6F6F6;
+// $underline: #e2e2e2;
+// $paragraphColor: #4e4949cc;
+
+@mixin flex-row-centered() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-col-centered() {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

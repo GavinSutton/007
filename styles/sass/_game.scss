@@ -1,0 +1,36 @@
+.game {
+    .enemy-zone {
+        border:$black 1px solid;
+        height: 25vh;
+    }
+
+    .game-field {
+        border:$black 1px solid;
+        height: 50vh
+    }
+
+    .game-controls {
+        @include flex-row-centered();
+        justify-content: space-evenly;
+        border:$black 1px solid;
+        height: 25vh;
+    }
+
+    .game-controls a {
+        border:$black 1px solid;
+        padding: 15px 20px;
+    }
+
+    .results-box {
+        @include flex-col-centered();
+        height: inherit;
+    }
+
+    h2 {
+        font-size: 5rem;
+        color: red;
+    }
+
+
+
+}
