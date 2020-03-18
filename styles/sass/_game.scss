@@ -1,36 +1,104 @@
 .game {
-    .enemy-zone {
-        border:$black 1px solid;
-        height: 25vh;
+
+    height: 100vh;
+
+    p, 
+    a {
+        color: $white;
+        font-size: 2rem;
     }
 
     .game-field {
         border:$black 1px solid;
-        height: 50vh
+        height: 60%;
+        position: relative;
     }
 
-    .game-controls {
+    .user-controls, 
+    .computer-zone {
         @include flex-row-centered();
         justify-content: space-evenly;
-        border:$black 1px solid;
-        height: 25vh;
+        border: black 4px solid;
+        height: 20%;
+        background: $black;
     }
 
-    .game-controls a {
-        border:$black 1px solid;
+    .user-controls a,
+    .user-ammo,
+    .computer,
+    .computer-ammo,
+    .user-life-points,
+    .computer-life-points {
+        border:$white 3px solid;
+        border-radius: 10px;
         padding: 15px 20px;
     }
 
-    .results-box {
-        @include flex-col-centered();
-        height: inherit;
+    .user-controls a:hover {
+            border: black 3px solid;
+            background-color: $white;
+            color: $black;
+        }
+
+    .user-ammo, 
+    .computer-ammo, 
+    .user-life-points,
+    .computer-life-points {
+        text-align: center;
+        width: 150px;
+        height: 100px;
     }
 
-    h2 {
-        font-size: 5rem;
+    .user-ammo, 
+    .computer-ammo {
+        @include flex-col-centered();
+        justify-content: space-around;
+    }
+
+    .user-life-points,
+    .computer-life-points {
+        @include flex-row-centered();
+        justify-content: space-evenly;
+    }
+
+    .fa-heart {
+        font-size: 1.8rem;
+        color:red;
+        margin: 0 5px;
+    }
+
+    .user-ammo-counter, 
+    .computer-ammo-counter {
+        
         color: red;
     }
 
+    .results-box {
+        position: absolute;
+        bottom: 20px;
+        left: 150px;
+    }
 
+    h2 {
+        font-size: 4rem;
+        color: red;
+    }
+
+    .user-gun {
+        width: 250px;
+        height: 250px;
+        position: absolute;
+        bottom: 0;
+        right: 250px;
+    }
+
+    img[src="assets/PP7.png"]{
+        width: 100%;
+    }
+
+    .badguy {
+        position: absolute;
+        left: 250px;
+    }
 
 }

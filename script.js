@@ -1,53 +1,140 @@
 $(document).ready(function () {
 
-    // function runComputerChoice() {}
-
-    const computerOptions = [`shoot`, `block`, `reload`];
-
+    // Randomize function
     const random = function (options) {
         const index = Math.floor(Math.random() * options.length);
         return options[index];
     }
+
+    let userHealth = 3; 
+    let cpuHealth = 3;
+
+    function userHealthFunction() {
+        if ( userHealth === 2) {
+            $(`.user-heart-3`).removeClass(`fas`).addClass(`far`)
+        }
+        if (userHealth === 1) {
+            $(`.user-heart-2`).removeClass(`fas`).addClass(`far`)
+        }
+        if (userHealth === 0) {
+            $(`.user-heart-1`).removeClass(`fas`).addClass(`far`)
+            alert(`You died!`)
+        }
+    }
+
+    function cpuHealthFunction() {
+        if (cpuHealth === 2) {
+            $(`.cpu-heart-3`).removeClass(`fas`).addClass(`far`)
+        }
+        if (cpuHealth === 1) {
+            $(`.cpu-heart-2`).removeClass(`fas`).addClass(`far`)
+        }
+        if (cpuHealth === 0) {
+            $(`.cpu-heart-1`).removeClass(`fas`).addClass(`far`)
+            alert(`You win!`)
+        }
+    }
+
+
+
+    let userAmmo = 1; 
+    let computerAmmo = 1;
+    function userAmmoFunction (choice) {
+        const userChoice = $(choice).attr(`id`);
+
+        if ( userChoice === `reload` && userChoice !== 'shoot' ) {
+            userAmmo = userAmmo + 1;
+        } else if ($(choice).attr(`id`) === `shoot` && userAmmo !== 0) {
+            userAmmo = userAmmo - 1;
+        } 
+
+        $(`.user-ammo-counter`).html(`${userAmmo}`);
+
+    }
+
+    const runComputerChoice = function() {
+        // list of computer choices
+        const computerOptions = [`shoot`, `block`, `reload`];
+        if (computerAmmo >= 1) {
+            random(computerOptions);
+        } else if (computerAmmo == 0) {
+            computerOptions.shift();
+            console.log(computerOptions)
+            random(computerOptions)
+        }
+
+        return computerChoice = random(computerOptions);
+    }
+
+    function computerAmmoFunction(userChoice) {
+
+        if (computerChoice === `reload` && $(userChoice).attr(`id`) !== 'shoot') {
+            computerAmmo = computerAmmo + 1;
+        } else if ( computerChoice === `shoot` && computerAmmo !== 0) {
+            computerAmmo = computerAmmo - 1;
+        }
+
+        $(`.computer-ammo-counter`).html(`${computerAmmo}`);
+
+    }
+
+
     
-    const computerChoice = random(computerOptions);
-    console.log(computerChoice);
+    function runUserChoice(choice) {
+        const userChoice = $(choice).attr(`id`);
 
+        if (userAmmo == 0 && userChoice === `shoot`) {
+            alert(`You need to reload before you can shoot!`)
+        } 
 
-    // function play() {
-    //     const computerOptions = [`shoot`, `block`, `reload`];
-
-    //     const random = function (options) {
-    //         const index = Math.floor(Math.random() * options.length);
-    //         return options[index];
-    //     }
-
-    //     const computerChoice = random(computerOptions);
-    //     console.log(computerChoice)
-    // }
-
-    
-    $(`a.user-choice`).on(`click`, function(e) {
-        e.preventDefault();
-        // play();
-        const userChoice = $(this).attr(`id`);
-
-        if (userChoice === `shoot` && computerChoice === `shoot`) {
+        if (userChoice === `shoot` && computerChoice === `shoot` && userAmmo !== 0) {
             $(`h2.results`).text(`Tie!`);
-        } else if (userChoice === `shoot` && computerChoice === `block`) {
+            userHealth = userHealth - 1;
+            userHealthFunction();
+            userHealth = userHealth - 1;
+            userHealthFunction();
+        } else if (userChoice === `shoot` && computerChoice === `block` && userAmmo !== 0) {
             $(`h2.results`).text(`Enemy blocked!`);
-        } else if (userChoice === `shoot` && computerChoice === `reload`) {
+        } else if (userChoice === `shoot` && computerChoice === `reload` && userAmmo !==0) {
             $(`h2.results`).text(`You shot him!`);
+            cpuHealth = cpuHealth - 1;
+            cpuHealthFunction();
         } else if (userChoice === `block` && computerChoice === `shoot`) {
             $(`h2.results`).text(`You blocked a shot!`);
         } else if (userChoice === `reload` && computerChoice === `shoot`) {
             $(`h2.results`).text(`You were hit!`);
+            userHealth = userHealth - 1;
+            userHealthFunction();
         } else if (userChoice === `reload` && computerChoice !== `shoot`) {
             $(`h2.results`).text(`+ 1 ammo`);
         } else if (userChoice === `block` && computerChoice !== `shoot`) {
             $(`h2.results`).text(`block`);
         } 
+    }
+
+    function runComputerOptions(userChoice) {
+
+
+        // if (computerAmmo == 0 && computerChoice === `shoot`) {
+        //     alert(`Computer can't shoot`)
+        // }
+
+    }
+
+
+    
+    $(`a.user-choice`).on(`click`, function(e) {
+        e.preventDefault();
+        runComputerChoice();
+        computerAmmoFunction(this);
+        runComputerOptions(this);
+        runUserChoice(this);
+        userAmmoFunction(this);
+        console.log(computerChoice)
     });
 });
+
+
 //Landing page, introduce the game. Click to play
 
 // Create a choice for user - shoot / reload / sheild
@@ -90,3 +177,20 @@ $(document).ready(function () {
 // 3) Bond related gifs play when you win or lose, customized for the situation
 // 4) Having health hearts (like in Zelda) or health bars (like in golden eye) for longer play
 // 5) option to choose a gun on landing page
+
+
+
+
+
+
+// OLD CODE THAT WORKED
+
+    // const computerOptions = [`shoot`, `block`, `reload`];
+
+    // const random = function (options) {
+    //     const index = Math.floor(Math.random() * options.length);
+    //     return options[index];
+    // }
+
+    // const computerChoice = random(computerOptions);
+    // console.log(computerChoice);

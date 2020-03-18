@@ -7,6 +7,10 @@ body {
   font-size: 125%;
 }
 
+p {
+  font-size: 2rem;
+}
+
 h1,
 h2,
 h3,
@@ -279,17 +283,24 @@ textarea {
   overflow: hidden;
 }
 
-.game .enemy-zone {
-  border: #333333 1px solid;
-  height: 25vh;
+.game {
+  height: 100vh;
+}
+
+.game p,
+.game a {
+  color: #FFFFFF;
+  font-size: 2rem;
 }
 
 .game .game-field {
   border: #333333 1px solid;
-  height: 50vh;
+  height: 60%;
+  position: relative;
 }
 
-.game .game-controls {
+.game .user-controls,
+.game .computer-zone {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -302,16 +313,39 @@ textarea {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  border: #333333 1px solid;
-  height: 25vh;
+  border: black 4px solid;
+  height: 20%;
+  background: #333333;
 }
 
-.game .game-controls a {
-  border: #333333 1px solid;
+.game .user-controls a,
+.game .user-ammo,
+.game .computer,
+.game .computer-ammo,
+.game .user-life-points,
+.game .computer-life-points {
+  border: #FFFFFF 3px solid;
+  border-radius: 10px;
   padding: 15px 20px;
 }
 
-.game .results-box {
+.game .user-controls a:hover {
+  border: black 3px solid;
+  background-color: #FFFFFF;
+  color: #333333;
+}
+
+.game .user-ammo,
+.game .computer-ammo,
+.game .user-life-points,
+.game .computer-life-points {
+  text-align: center;
+  width: 150px;
+  height: 100px;
+}
+
+.game .user-ammo,
+.game .computer-ammo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -325,12 +359,63 @@ textarea {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: inherit;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.game .user-life-points,
+.game .computer-life-points {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.game .fa-heart {
+  font-size: 1.8rem;
+  color: red;
+  margin: 0 5px;
+}
+
+.game .user-ammo-counter,
+.game .computer-ammo-counter {
+  color: red;
+}
+
+.game .results-box {
+  position: absolute;
+  bottom: 20px;
+  left: 150px;
 }
 
 .game h2 {
-  font-size: 5rem;
+  font-size: 4rem;
   color: red;
+}
+
+.game .user-gun {
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  bottom: 0;
+  right: 250px;
+}
+
+.game img[src="assets/PP7.png"] {
+  width: 100%;
+}
+
+.game .badguy {
+  position: absolute;
+  left: 250px;
 }
 
 .landing header {
@@ -361,11 +446,16 @@ textarea {
   color: #FFFFFF;
 }
 
+.landing .accept {
+  border: 1px solid #FFFFFF;
+  padding: 15px 20px;
+}
+
 .landing h1 {
   font-size: 7rem;
 }
 
-.landing p {
+.landing header p {
   font-size: 2rem;
-  margin: 10px 0;
+  margin: 20px 0;
 }
