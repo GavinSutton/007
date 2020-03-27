@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
     <script src="https://kit.fontawesome.com/7aa5d1a72c.js" crossorigin="anonymous"></script>
     <title>007</title>
@@ -12,13 +13,13 @@
     <a href="#maincontent" class="skip-link">Skip to main content.</a>
     <header>
         <div class="landing-info">
-            <h1>007</h1>
-            <p>Stop the bad guy.</p>
-            <p>Save the world.</p>
+            <img src="assets/007Logo.png" alt="">
+            <h1></h1>
             <p><a href="#maincontent" class="accept">Accept Mission</a></p>
         </div>
     </header>
     <main id="maincontent" class="game">
+        
 
 <!-- COMPUTER ZONE -->
         <section class="computer-zone">
@@ -28,13 +29,19 @@
                 <i class="fas fa-heart cpu-heart-3"></i>
             </div>
             <div class="computer shoot">
-                <p id="shoot" class="computer-choice" value="shoot">Shoot</a></p>
+                <p id="shoot" class="computer-choice" value="shoot">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/gun.png" />
+                </p>
             </div>
             <div class="computer block">
-                <p id="block" class="computer-choice" value="block">Block</a></p>
+                <p id="block" class="computer-choice" value="block">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/shield.png" />
+                </p>
             </div>
             <div class="computer reload">
-                <p id="reload" class="computer-choice" value="reload">Reload</a></p>
+                <p id="reload" class="computer-choice" value="reload">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/bullet.png" />
+                </p>
             </div>
             <div class='computer-ammo'>
                 <p>Ammo</p>
@@ -45,14 +52,19 @@
 
 <!-- GAME FIELD -->
         <section class="game-field">
-            <div class="badguy">
-                <img src="assets/badguy3.png" alt="">
-            </div>
-            <div class="results-box">
-                <h2 class="results"></h2>
-            </div>
-            <div class="user-gun">
-                <img src="assets/PP7.png" alt="">
+            <div class="game-field-box wrapper">
+                <div class="badguy">
+                    <img src="assets/badguy3.png" alt="">
+                </div>
+                <div class="results-box">
+                    <h2 class="results"></h2>
+                </div>
+                <div class="user-results-box">
+                    <h2 class="user-results"></h2>
+                </div>
+                <div class="user-gun">
+                    <img src="assets/PP7.png" alt="">
+                </div>
             </div>
         </section>
 <!-- GAME FIELD -->
@@ -65,13 +77,13 @@
                 <p class="user-ammo-counter">1</p>
             </div>
             <div class="shoot">
-                <p><a href="shoot" id="shoot" value="shoot" class="user-choice">Shoot</a></p>
+                <p href="shoot" id="shoot" value="shoot" class="user-choice"><img src="https://img.icons8.com/ios-filled/50/000000/gun.png" /></p>
             </div>
             <div class="block">
-                <p><a href="block" id="block" class="user-choice" value="block">Block</a></p>
+                <p href="block" id="block" class="user-choice" value="block"><img src="https://img.icons8.com/ios-filled/50/000000/shield.png" /></p>
             </div>
             <div class="reload">
-                <p><a href="reload" id="reload" class="user-choice" value="reload">Reload</a></p>
+                <p href="reload" id="reload" class="user-choice" value="reload"><img src="https://img.icons8.com/ios-filled/50/000000/bullet.png" /></p>
             </div>
             <div class="user-life-points">
                 <i class="fas fa-heart user-heart-1"></i>
@@ -80,6 +92,7 @@
             </div>
         </section>
 <!-- USER CONTROLS -->
+
 
     </main>
     <footer>

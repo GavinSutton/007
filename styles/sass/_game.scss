@@ -1,17 +1,31 @@
 .game {
 
+    background-color: black;
     height: 100vh;
+    
 
     p, 
     a {
+        @include font();
         color: $white;
         font-size: 2rem;
     }
+
 
     .game-field {
         border:$black 1px solid;
         height: 60%;
         position: relative;
+        background-color: white;
+    }
+
+    .black-background {
+        background-color: black;;
+    }
+
+    video[src="assets/youWin.mp4"] {
+        width: 100%;
+        height: 100%
     }
 
     .user-controls, 
@@ -23,7 +37,7 @@
         background: $black;
     }
 
-    .user-controls a,
+    p.user-choice,
     .user-ammo,
     .computer,
     .computer-ammo,
@@ -34,11 +48,19 @@
         padding: 15px 20px;
     }
 
-    .user-controls a:hover {
-            border: black 3px solid;
+    p.user-choice, 
+    .computer {
+        background-color: white;
+    }
+
+    p.user-choice:hover {
+            border: $gold 3px solid;
             background-color: $white;
-            color: $black;
-        }
+    }
+
+    p.user-choice:hover img {
+            transform: scale(1.2);
+    }
 
     .user-ammo, 
     .computer-ammo, 
@@ -73,7 +95,7 @@
         color: red;
     }
 
-    .results-box {
+    .user-results-box {
         position: absolute;
         bottom: 20px;
         left: 150px;
@@ -81,7 +103,8 @@
 
     h2 {
         font-size: 4rem;
-        color: red;
+        color: $gold;
+        @include font();
     }
 
     .user-gun {

@@ -1,18 +1,25 @@
 .landing {
     header {
-        background-color: $black;
+        background: url(../assets/gunBarrell.png);
+        background-position: center;
         height: 100vh;
         display: flex;
         justify-content: center;
     }
 
+    img[src="assets/007Logo.png"] {
+        width: 70%;
+        margin: 50px 0;
+    }
+
     .landing-info {
         @include flex-col-centered();
-        color: $white
+        @include font();
+        color: $black;
     }
 
     .accept {
-        border: 1px solid $white;
+        border: 1px solid $black;
         padding: 15px 20px;
     }
 

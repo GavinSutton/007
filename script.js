@@ -16,6 +16,12 @@ $(document).ready(function () {
         if (userHealth === 1) {
             $(`.user-heart-2`).removeClass(`fas`).addClass(`far`)
         }
+
+        if (userHealth === 0 && cpuHealth === 0) {
+            $(`.user-heart-1`).removeClass(`fas`).addClass(`far`)
+            alert(`Tie Game`)
+        }
+        
         if (userHealth === 0) {
             $(`.user-heart-1`).removeClass(`fas`).addClass(`far`)
             alert(`You died!`)
@@ -29,9 +35,12 @@ $(document).ready(function () {
         if (cpuHealth === 1) {
             $(`.cpu-heart-2`).removeClass(`fas`).addClass(`far`)
         }
-        if (cpuHealth === 0) {
+
+        if (cpuHealth === 0 && userHealth >=1) {
             $(`.cpu-heart-1`).removeClass(`fas`).addClass(`far`)
             alert(`You win!`)
+            // $(`.game-field`).html(`<img src="assets/youwin.gif">`)
+            $(`.game-field`).html(`<video autoplay src="assets/youWin.mp4"></video>`).addClass(`black-background`)
         }
     }
 
@@ -88,27 +97,27 @@ $(document).ready(function () {
         } 
 
         if (userChoice === `shoot` && computerChoice === `shoot` && userAmmo !== 0) {
-            $(`h2.results`).text(`Tie!`);
+            $(`h2.user-results`).text(`Tie!`);
             userHealth = userHealth - 1;
             userHealthFunction();
-            userHealth = userHealth - 1;
-            userHealthFunction();
+            cpuHealth = cpuHealth - 1;
+            cpuHealthFunction();
         } else if (userChoice === `shoot` && computerChoice === `block` && userAmmo !== 0) {
-            $(`h2.results`).text(`Enemy blocked!`);
+            $(`h2.user-results`).text(`Enemy blocked!`);
         } else if (userChoice === `shoot` && computerChoice === `reload` && userAmmo !==0) {
-            $(`h2.results`).text(`You shot him!`);
+            $(`h2.user-results`).text(`You shot him!`);
             cpuHealth = cpuHealth - 1;
             cpuHealthFunction();
         } else if (userChoice === `block` && computerChoice === `shoot`) {
-            $(`h2.results`).text(`You blocked a shot!`);
+            $(`h2.user-results`).text(`You blocked a shot!`);
         } else if (userChoice === `reload` && computerChoice === `shoot`) {
-            $(`h2.results`).text(`You were hit!`);
+            $(`h2.user-results`).text(`You were hit!`);
             userHealth = userHealth - 1;
             userHealthFunction();
         } else if (userChoice === `reload` && computerChoice !== `shoot`) {
-            $(`h2.results`).text(`+ 1 ammo`);
+            $(`h2.user-results`).text(`+ 1 ammo`);
         } else if (userChoice === `block` && computerChoice !== `shoot`) {
-            $(`h2.results`).text(`block`);
+            $(`h2.user-results`).text(`block`);
         } 
     }
 
@@ -123,7 +132,7 @@ $(document).ready(function () {
 
 
     
-    $(`a.user-choice`).on(`click`, function(e) {
+    $(`p.user-choice`).on(`click`, function(e) {
         e.preventDefault();
         runComputerChoice();
         computerAmmoFunction(this);

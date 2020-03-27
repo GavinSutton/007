@@ -284,19 +284,33 @@ textarea {
 }
 
 .game {
+  background-color: black;
   height: 100vh;
 }
 
 .game p,
 .game a {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  letter-spacing: 4px;
   color: #FFFFFF;
   font-size: 2rem;
 }
 
 .game .game-field {
-  border: #333333 1px solid;
+  border: #000000 1px solid;
   height: 60%;
   position: relative;
+  background-color: white;
+}
+
+.game .black-background {
+  background-color: black;
+}
+
+.game video[src="assets/youWin.mp4"] {
+  width: 100%;
+  height: 100%;
 }
 
 .game .user-controls,
@@ -315,10 +329,10 @@ textarea {
           justify-content: space-evenly;
   border: black 4px solid;
   height: 20%;
-  background: #333333;
+  background: #000000;
 }
 
-.game .user-controls a,
+.game p.user-choice,
 .game .user-ammo,
 .game .computer,
 .game .computer-ammo,
@@ -329,10 +343,19 @@ textarea {
   padding: 15px 20px;
 }
 
-.game .user-controls a:hover {
-  border: black 3px solid;
+.game p.user-choice,
+.game .computer {
+  background-color: white;
+}
+
+.game p.user-choice:hover {
+  border: #C4944B 3px solid;
   background-color: #FFFFFF;
-  color: #333333;
+}
+
+.game p.user-choice:hover img {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .game .user-ammo,
@@ -390,7 +413,7 @@ textarea {
   color: red;
 }
 
-.game .results-box {
+.game .user-results-box {
   position: absolute;
   bottom: 20px;
   left: 150px;
@@ -398,7 +421,10 @@ textarea {
 
 .game h2 {
   font-size: 4rem;
-  color: red;
+  color: #C4944B;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  letter-spacing: 4px;
 }
 
 .game .user-gun {
@@ -419,7 +445,8 @@ textarea {
 }
 
 .landing header {
-  background-color: #333333;
+  background: url(../assets/gunBarrell.png);
+  background-position: center;
   height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -427,6 +454,11 @@ textarea {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.landing img[src="assets/007Logo.png"] {
+  width: 70%;
+  margin: 50px 0;
 }
 
 .landing .landing-info {
@@ -443,11 +475,14 @@ textarea {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #FFFFFF;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  letter-spacing: 4px;
+  color: #000000;
 }
 
 .landing .accept {
-  border: 1px solid #FFFFFF;
+  border: 1px solid #000000;
   padding: 15px 20px;
 }
 
