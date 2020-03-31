@@ -1,5 +1,7 @@
 .game {
 
+    display: flex;
+    flex-direction: column;
     background-color: black;
     height: 100vh;
     
@@ -14,9 +16,10 @@
 
     .game-field {
         border:$black 1px solid;
-        height: 60%;
         position: relative;
         background-color: white;
+        flex: 4;
+        display: flex;
     }
 
     .black-background {
@@ -25,7 +28,8 @@
 
     video[src="assets/youWin.mp4"] {
         width: 100%;
-        height: 100%
+        height: 100%;
+        flex: 4;
     }
 
     .user-controls, 
@@ -33,8 +37,9 @@
         @include flex-row-centered();
         justify-content: space-evenly;
         border: black 4px solid;
-        height: 20%;
         background: $black;
+        flex: 1;
+        padding: 10px 0;
     }
 
     p.user-choice,
