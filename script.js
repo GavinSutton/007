@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    // Typed.js for aesthetics
     var typed = new Typed('.type', {
         strings: [
             'Stop the bad guy. ^1000',
@@ -11,15 +12,17 @@ $(document).ready(function () {
         loop: true  // Default value
     });
 
-    // Randomize function
+    // Randomize function for computer's choice
     const random = function (options) {
         const index = Math.floor(Math.random() * options.length);
         return options[index];
     }
 
+    // The default user health, shown in hearts on the game field. 
     let userHealth = 3; 
     let cpuHealth = 3;
 
+    // userHealthFunction calculates the amount of hearts the user has
     function userHealthFunction() {
         if ( userHealth === 2) {
             $(`.user-heart-3`).removeClass(`fas`).addClass(`far`)
@@ -39,6 +42,7 @@ $(document).ready(function () {
         }
     }
 
+    // This function lowers the health of the computer when shot, and alerts the user when they have won
     function cpuHealthFunction() {
         if (cpuHealth === 2) {
             $(`.cpu-heart-3`).removeClass(`fas`).addClass(`far`)
@@ -49,9 +53,16 @@ $(document).ready(function () {
 
         if (cpuHealth === 0 && userHealth >=1) {
             $(`.cpu-heart-1`).removeClass(`fas`).addClass(`far`)
-            alert(`You win!`)
-            // $(`.game-field`).html(`<img src="assets/youwin.gif">`)
-            $(`.game-field`).html(`<video autoplay src="assets/youWin.mp4"></video>`).addClass(`black-background`)
+            $(`.game-field`).html(`<video autoplay src="assets/youWin.mp4"></video><h2 class="play-again"></h2>`).addClass(`black-background`)
+            setTimeout(function (){
+                $(`.game-field`).addClass(`black-background`).html(
+                `<div class="play-again">
+                    <h2>You Won!</h2>
+                    <a href=""><p>Play again?</p></a>
+                </div>`
+                )
+            }, 5000);
+            
         }
     }
 
@@ -132,13 +143,14 @@ $(document).ready(function () {
         } 
     }
 
-    function runComputerOptions(userChoice) {
-
-
-        // if (computerAmmo == 0 && computerChoice === `shoot`) {
-        //     alert(`Computer can't shoot`)
-        // }
-
+    function runComputerOptions() {
+        if (computerChoice === `reload`) {
+            $(`h2.cpu-results`).text(`Reload`);
+        } else if (computerChoice === `block`) {
+            $(`h2.cpu-results`).text(`Block`); 
+        } else if (computerChoice === `shoot`) {
+            $(`h2.cpu-results`).text(`Shoot`);
+        }
     }
 
 

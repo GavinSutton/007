@@ -304,22 +304,6 @@ textarea {
   font-size: 2rem;
 }
 
-.game .game-field {
-  border: #000000 1px solid;
-  position: relative;
-  background-color: white;
-  -webkit-box-flex: 4;
-      -ms-flex: 4;
-          flex: 4;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.game .black-background {
-  background-color: black;
-}
-
 .game video[src="assets/youWin.mp4"] {
   width: 100%;
   height: 100%;
@@ -348,6 +332,25 @@ textarea {
       -ms-flex: 1;
           flex: 1;
   padding: 10px 0;
+}
+
+.game .game-field {
+  border: #000000 1px solid;
+  position: relative;
+  background-color: white;
+  -webkit-box-flex: 4;
+      -ms-flex: 4;
+          flex: 4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.game .black-background {
+  background-color: black;
 }
 
 .game p.user-choice,
@@ -435,6 +438,37 @@ textarea {
   position: absolute;
   bottom: 20px;
   left: 150px;
+}
+
+.game .cpu-results-box {
+  position: absolute;
+  top: 20px;
+  right: 150px;
+}
+
+.game .play-again {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  letter-spacing: 4px;
+  color: #C4944B;
+  background-color: #000000;
+}
+
+.game .play-again h2 {
+  font-size: 4rem;
 }
 
 .game h2 {

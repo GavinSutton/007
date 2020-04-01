@@ -5,25 +5,11 @@
     background-color: black;
     height: 100vh;
     
-
     p, 
     a {
         @include font();
         color: $white;
         font-size: 2rem;
-    }
-
-
-    .game-field {
-        border:$black 1px solid;
-        position: relative;
-        background-color: white;
-        flex: 4;
-        display: flex;
-    }
-
-    .black-background {
-        background-color: black;;
     }
 
     video[src="assets/youWin.mp4"] {
@@ -40,6 +26,19 @@
         background: $black;
         flex: 1;
         padding: 10px 0;
+    }
+
+    .game-field {
+        border:$black 1px solid;
+        position: relative;
+        background-color: white;
+        flex: 4;
+        display: flex;
+        justify-content: center;
+    }
+
+    .black-background {
+        background-color: black;
     }
 
     p.user-choice,
@@ -104,6 +103,24 @@
         position: absolute;
         bottom: 20px;
         left: 150px;
+    }
+
+    .cpu-results-box {
+        position: absolute;
+        top: 20px;
+        right: 150px;
+    }
+
+    .play-again {
+        @include flex-col-centered();
+        @include font();
+        
+        color: $gold;
+        background-color: $black;
+    }
+
+    .play-again h2 {
+        font-size: 4rem;
     }
 
     h2 {
