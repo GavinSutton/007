@@ -131,8 +131,9 @@ $(document).ready(function () {
         const userChoice = $(choice).attr(`id`);
         setTimeout(function () {
             $(`h3.user-results`).text(``);
+            $(`h4.user-results`).text(``);
             $(`h3.cpu-results`).text(``);
-        }, 1100);
+        }, 1000);
 
         if (userAmmo == 0 && userChoice === `shoot`) {
             alert(`You need to reload before you can shoot!`)
@@ -140,24 +141,30 @@ $(document).ready(function () {
 
         if (userChoice === `shoot` && computerChoice === `shoot` && userAmmo !== 0) {
             $(`h3.user-results`).text(`Tie`);
+            $(`h4.user-results`).text(`You shot eachother`);
             userHealth = userHealth - 1;
             userHealthFunction();
             cpuHealth = cpuHealth - 1;
             cpuHealthFunction();
         } else if (userChoice === `shoot` && computerChoice === `block` && userAmmo !== 0) {
-            $(`h3.user-results`).text(`Enemy blocked`);
+            $(`h3.user-results`).text(`Shoot:`);
+            $(`h4.user-results`).text(`Enemy blocked shot`);
         } else if (userChoice === `shoot` && computerChoice === `reload` && userAmmo !==0) {
-            $(`h3.user-results`).text(`You shot him`);
+            $(`h3.user-results`).text(`Shoot:`);
+            $(`h4.user-results`).text(`Enemy was hit`);
             cpuHealth = cpuHealth - 1;
             cpuHealthFunction();
         } else if (userChoice === `block` && computerChoice === `shoot`) {
-            $(`h3.user-results`).text(`You blocked a shot`);
+            $(`h3.user-results`).text(`You blocked`);
+            $(`h4.user-results`).text(`You stopped a shot`);
         } else if (userChoice === `reload` && computerChoice === `shoot`) {
-            $(`h3.user-results`).text(`Reload: You were hit`);
+            $(`h3.user-results`).text(`Reload:`);
+            $(`h4.user-results`).text(`You were hit`);
             userHealth = userHealth - 1;
             userHealthFunction();
         } else if (userChoice === `reload` && computerChoice !== `shoot`) {
-            $(`h3.user-results`).text(`Reload: +1 ammo`);
+            $(`h3.user-results`).text(`Reload:`);
+            $(`h4.user-results`).text(`+1 ammo`);
             // $(`h2.user-results`).text(`Reload: + 1 ammo`);
         } else if (userChoice === `block` && computerChoice !== `shoot`) {
             $(`h3.user-results`).text(`You blocked`);

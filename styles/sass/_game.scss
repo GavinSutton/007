@@ -2,7 +2,7 @@
 
     display: flex;
     flex-direction: column;
-    background-color: black;
+    background-color: $black;
     height: 100vh;
     
     p, 
@@ -16,7 +16,14 @@
         font-size: 3rem;
         color: $gold;
         @include font();
-        text-shadow: 2px 2px 4px #000000;
+        text-shadow: 2px 2px 4px $black;
+    }
+
+    h4 {
+        font-size: 1rem;
+        color: $gold;
+        @include font();
+        text-shadow: 2px 2px 4px $black;
     }
 
     img[src="assets/PP7.png"]{
@@ -120,7 +127,6 @@
         position: absolute;
         top: 20px;
         right: 150px;
-        flex: 1 0 50%;
     }
 
     .play-again {
@@ -151,7 +157,6 @@
         position: relative;
         left: 250px;
         overflow: hidden;
-        flex: 1 0 50%;
     }
 
 }
@@ -171,6 +176,18 @@
             font-size: 2rem;
         }
 
+    }
+}
+
+@media (max-width: 880px) {
+    .game {
+        .user-results-box {
+            left: 50px;
+        }
+
+        .cpu-results-box {
+            right: 50px;
+        }
     }
 }
 
@@ -208,6 +225,29 @@
 
         .computer {
             display: none;
+        }
+
+    }
+}
+
+
+@media (max-width: 500px) {
+    .game {
+
+        .badguy {
+            left: 5px;
+        }
+
+        .user-gun {
+            right: 5px;
+        }
+
+        .user-results-box {
+            left: 15px;
+        }
+
+        .cpu-results-box {
+            right: 15px;
         }
     }
 }
