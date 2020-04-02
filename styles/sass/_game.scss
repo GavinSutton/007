@@ -12,10 +12,19 @@
         font-size: 2rem;
     }
 
-    video[src="assets/youWin.mp4"] {
+    h3 {
+        font-size: 3rem;
+        color: $gold;
+        @include font();
+        text-shadow: 2px 2px 4px #000000;
+    }
+
+    img[src="assets/PP7.png"]{
         width: 100%;
-        height: 100%;
-        flex: 4;
+    }
+
+    video[src="assets/you-win.mp4"] {
+        width: 77%;
     }
 
     .user-controls, 
@@ -31,14 +40,16 @@
     .game-field {
         border:$black 1px solid;
         position: relative;
-        background-color: white;
+        background: url(./../assets/level.jpg) no-repeat bottom;
+        background-size: 1200px;
         flex: 4;
         display: flex;
         justify-content: center;
+        overflow: hidden;
     }
 
     .black-background {
-        background-color: black;
+        background: black;
     }
 
     p.user-choice,
@@ -109,24 +120,23 @@
         position: absolute;
         top: 20px;
         right: 150px;
+        flex: 1 0 50%;
     }
 
     .play-again {
         @include flex-col-centered();
         @include font();
-        
         color: $gold;
-        background-color: $black;
     }
 
     .play-again h2 {
         font-size: 4rem;
+        margin-bottom: 30px;
     }
 
-    h2 {
-        font-size: 4rem;
-        color: $gold;
-        @include font();
+    .play-again a {
+        border: 1px solid $white;
+        padding: 15px 20px;
     }
 
     .user-gun {
@@ -134,16 +144,70 @@
         height: 250px;
         position: absolute;
         bottom: 0;
-        right: 250px;
-    }
-
-    img[src="assets/PP7.png"]{
-        width: 100%;
+        right: 350px;
     }
 
     .badguy {
-        position: absolute;
+        position: relative;
         left: 250px;
+        overflow: hidden;
+        flex: 1 0 50%;
     }
 
+}
+
+
+@media (max-width: 1060px) {
+    .game {
+        .badguy {
+            left: 150px;
+        }
+
+        .user-gun {
+            right: 150px;
+        }
+
+        h3 {
+            font-size: 2rem;
+        }
+
+    }
+}
+
+
+@media (max-width: 680px) {
+    .game {
+        .badguy {
+            left: 50px;
+        }
+
+        .user-gun {
+            right: 50px;
+        }
+
+        .user-controls {
+            flex-wrap: wrap;
+        }
+
+        .user-ammo {
+            order: -2;
+            flex: 1 0 50%;
+            margin-bottom: 10px;
+        }
+
+        .user-life-points {
+            order: -1;
+            flex: 1 0 50%;
+            margin-bottom: 10px;
+        }
+
+        .computer-ammo,
+        .computer-life-points {
+            flex: 1 0 50%;
+        }
+
+        .computer {
+            display: none;
+        }
+    }
 }

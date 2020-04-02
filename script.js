@@ -12,13 +12,7 @@ $(document).ready(function () {
         loop: true  // Default value
     });
 
-    // Randomize function for computer's choice
-    const random = function (options) {
-        const index = Math.floor(Math.random() * options.length);
-        return options[index];
-    }
-
-    // The default user health, shown in hearts on the game field. 
+    // The default user/cpu health, shown in hearts on the game field. 
     let userHealth = 3; 
     let cpuHealth = 3;
 
@@ -38,11 +32,16 @@ $(document).ready(function () {
         
         if (userHealth === 0) {
             $(`.user-heart-1`).removeClass(`fas`).addClass(`far`)
-            alert(`You died!`)
+            $(`.game-field`).addClass(`black-background`).html(
+                `<div class="play-again">
+                <h2>You Lost!</h2>
+                <a href=""><p>Play again?</p></a>
+            </div>`
+            )
         }
     }
 
-    // This function lowers the health of the computer when shot, and alerts the user when they have won
+    // cpuHealthFunction lowers the health of the computer when shot, and alerts the user when they have won
     function cpuHealthFunction() {
         if (cpuHealth === 2) {
             $(`.cpu-heart-3`).removeClass(`fas`).addClass(`far`)
@@ -53,7 +52,7 @@ $(document).ready(function () {
 
         if (cpuHealth === 0 && userHealth >=1) {
             $(`.cpu-heart-1`).removeClass(`fas`).addClass(`far`)
-            $(`.game-field`).html(`<video autoplay src="assets/youWin.mp4"></video><h2 class="play-again"></h2>`).addClass(`black-background`)
+            $(`.game-field`).html(`<video autoplay src="assets/you-win.mp4"></video>`).addClass(`black-background`)
             setTimeout(function (){
                 $(`.game-field`).addClass(`black-background`).html(
                 `<div class="play-again">
@@ -67,9 +66,11 @@ $(document).ready(function () {
     }
 
 
-
-    let userAmmo = 1; 
+    // The default user/cpu computerAmmo, shown in the ammo section
+    let userAmmo = 1;
     let computerAmmo = 1;
+
+    // userAmmoFunction adds one amunition for every "reload" while subtracting one amunition for every "shoot"
     function userAmmoFunction (choice) {
         const userChoice = $(choice).attr(`id`);
 
@@ -80,9 +81,28 @@ $(document).ready(function () {
         } 
 
         $(`.user-ammo-counter`).html(`${userAmmo}`);
-
     }
 
+    // Randomize function for computer's choice
+    const random = function (options) {
+        const index = Math.floor(Math.random() * options.length);
+        return options[index];
+    }
+
+    // the enemy function choses between three badguys to face
+    const enemy = function() {
+        const enemyOptions = [`bad-guy-1`, `bad-guy-2`, `bad-guy-3`]
+        const enemyChoice = random(enemyOptions);
+        console.log(enemyChoice)
+        $(`.badguy`).html(`
+        <img src="assets/${enemyChoice}.png" alt = "">
+        `)   
+    }
+
+    // Running the enemy function on page load
+    enemy();
+
+    // runComputerChoice has a list of the three choices (shoot, block, reload) that uses the randomize function above to chose between. However, if cpu ammo is at 0, the "shoot" option is shift()ed, and the cpu can only block or reload
     const runComputerChoice = function() {
         // list of computer choices
         const computerOptions = [`shoot`, `block`, `reload`];
@@ -90,71 +110,72 @@ $(document).ready(function () {
             random(computerOptions);
         } else if (computerAmmo == 0) {
             computerOptions.shift();
-            console.log(computerOptions)
             random(computerOptions)
         }
 
         return computerChoice = random(computerOptions);
     }
 
-    function computerAmmoFunction(userChoice) {
-
-        if (computerChoice === `reload` && $(userChoice).attr(`id`) !== 'shoot') {
+    // computerAmmoFunction adds ammo if runComputerChoice is "reload", and subtracts ammo if runComputerChoice is "shoot" 
+    function computerAmmoFunction() {
+        if (computerChoice === `reload`) {
             computerAmmo = computerAmmo + 1;
         } else if ( computerChoice === `shoot` && computerAmmo !== 0) {
             computerAmmo = computerAmmo - 1;
         }
-
         $(`.computer-ammo-counter`).html(`${computerAmmo}`);
-
     }
 
-
-    
+    // runUserChoice describes all the scenarios of what the user chooses vs what the cpu choice is, and runs other functions based off of those choices. 
     function runUserChoice(choice) {
         const userChoice = $(choice).attr(`id`);
+        setTimeout(function () {
+            $(`h3.user-results`).text(``);
+            $(`h3.cpu-results`).text(``);
+        }, 1100);
 
         if (userAmmo == 0 && userChoice === `shoot`) {
             alert(`You need to reload before you can shoot!`)
         } 
 
         if (userChoice === `shoot` && computerChoice === `shoot` && userAmmo !== 0) {
-            $(`h2.user-results`).text(`Tie`);
+            $(`h3.user-results`).text(`Tie`);
             userHealth = userHealth - 1;
             userHealthFunction();
             cpuHealth = cpuHealth - 1;
             cpuHealthFunction();
         } else if (userChoice === `shoot` && computerChoice === `block` && userAmmo !== 0) {
-            $(`h2.user-results`).text(`Enemy blocked`);
+            $(`h3.user-results`).text(`Enemy blocked`);
         } else if (userChoice === `shoot` && computerChoice === `reload` && userAmmo !==0) {
-            $(`h2.user-results`).text(`You shot him`);
+            $(`h3.user-results`).text(`You shot him`);
             cpuHealth = cpuHealth - 1;
             cpuHealthFunction();
         } else if (userChoice === `block` && computerChoice === `shoot`) {
-            $(`h2.user-results`).text(`You blocked a shot`);
+            $(`h3.user-results`).text(`You blocked a shot`);
         } else if (userChoice === `reload` && computerChoice === `shoot`) {
-            $(`h2.user-results`).text(`You were hit`);
+            $(`h3.user-results`).text(`Reload: You were hit`);
             userHealth = userHealth - 1;
             userHealthFunction();
         } else if (userChoice === `reload` && computerChoice !== `shoot`) {
-            $(`h2.user-results`).text(`+ 1 ammo`);
+            $(`h3.user-results`).text(`Reload: +1 ammo`);
+            // $(`h2.user-results`).text(`Reload: + 1 ammo`);
         } else if (userChoice === `block` && computerChoice !== `shoot`) {
-            $(`h2.user-results`).text(`You blocked`);
+            $(`h3.user-results`).text(`You blocked`);
         } 
     }
 
+    // runComputerOptions simply displays what the computer chooses so the user knows
     function runComputerOptions() {
         if (computerChoice === `reload`) {
-            $(`h2.cpu-results`).text(`Reload`);
+            $(`h3.cpu-results`).text(`Reload`);
         } else if (computerChoice === `block`) {
-            $(`h2.cpu-results`).text(`Block`); 
+            $(`h3.cpu-results`).text(`Block`); 
         } else if (computerChoice === `shoot`) {
-            $(`h2.cpu-results`).text(`Shoot`);
+            $(`h3.cpu-results`).text(`Shoot`);
         }
     }
-
-
     
+    // This click function activates the game and depending on what is clicked (shoot, reload, block) activates a bunch of other functions. The "this" sends the option to other functions. 
     $(`p.user-choice`).on(`click`, function(e) {
         e.preventDefault();
         runComputerChoice();
@@ -162,8 +183,14 @@ $(document).ready(function () {
         runComputerOptions(this);
         runUserChoice(this);
         userAmmoFunction(this);
-        console.log(computerChoice)
     });
+
+    // This function controls what is displayed on screen. Upon screen load, only the header is displayed, forcing the user to click "accept", which then hides the header and sends the user to the game screen. 
+    $(`.accept`).on(`click`, function (e) {
+        $(`main`).removeClass(`hide`)
+        $(`header`).addClass('hide')
+    });
+
 });
 
 

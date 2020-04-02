@@ -1,6 +1,6 @@
 * {
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 body {
@@ -304,12 +304,21 @@ textarea {
   font-size: 2rem;
 }
 
-.game video[src="assets/youWin.mp4"] {
+.game h3 {
+  font-size: 3rem;
+  color: #C4944B;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.game img[src="assets/PP7.png"] {
   width: 100%;
-  height: 100%;
-  -webkit-box-flex: 4;
-      -ms-flex: 4;
-          flex: 4;
+}
+
+.game video[src="assets/you-win.mp4"] {
+  width: 77%;
 }
 
 .game .user-controls,
@@ -337,7 +346,8 @@ textarea {
 .game .game-field {
   border: #000000 1px solid;
   position: relative;
-  background-color: white;
+  background: url(./../assets/level.jpg) no-repeat bottom;
+  background-size: 1200px;
   -webkit-box-flex: 4;
       -ms-flex: 4;
           flex: 4;
@@ -347,10 +357,11 @@ textarea {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  overflow: hidden;
 }
 
 .game .black-background {
-  background-color: black;
+  background: black;
 }
 
 .game p.user-choice,
@@ -444,6 +455,9 @@ textarea {
   position: absolute;
   top: 20px;
   right: 150px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 50%;
+          flex: 1 0 50%;
 }
 
 .game .play-again {
@@ -464,19 +478,16 @@ textarea {
   font-weight: 300;
   letter-spacing: 4px;
   color: #C4944B;
-  background-color: #000000;
 }
 
 .game .play-again h2 {
   font-size: 4rem;
+  margin-bottom: 30px;
 }
 
-.game h2 {
-  font-size: 4rem;
-  color: #C4944B;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 300;
-  letter-spacing: 4px;
+.game .play-again a {
+  border: 1px solid #FFFFFF;
+  padding: 15px 20px;
 }
 
 .game .user-gun {
@@ -484,20 +495,72 @@ textarea {
   height: 250px;
   position: absolute;
   bottom: 0;
-  right: 250px;
-}
-
-.game img[src="assets/PP7.png"] {
-  width: 100%;
+  right: 350px;
 }
 
 .game .badguy {
-  position: absolute;
+  position: relative;
   left: 250px;
+  overflow: hidden;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 50%;
+          flex: 1 0 50%;
+}
+
+@media (max-width: 1060px) {
+  .game .badguy {
+    left: 150px;
+  }
+  .game .user-gun {
+    right: 150px;
+  }
+  .game h3 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .game .badguy {
+    left: 50px;
+  }
+  .game .user-gun {
+    right: 50px;
+  }
+  .game .user-controls {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .game .user-ammo {
+    -webkit-box-ordinal-group: -1;
+        -ms-flex-order: -2;
+            order: -2;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 50%;
+            flex: 1 0 50%;
+    margin-bottom: 10px;
+  }
+  .game .user-life-points {
+    -webkit-box-ordinal-group: 0;
+        -ms-flex-order: -1;
+            order: -1;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 50%;
+            flex: 1 0 50%;
+    margin-bottom: 10px;
+  }
+  .game .computer-ammo,
+  .game .computer-life-points {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 50%;
+            flex: 1 0 50%;
+  }
+  .game .computer {
+    display: none;
+  }
 }
 
 .landing header {
-  background: url(../assets/gunBarrell.png);
+  background: url(../assets/gun-barrell.png);
   background-position: center;
   height: 100vh;
   display: -webkit-box;
@@ -508,7 +571,16 @@ textarea {
           justify-content: center;
 }
 
-.landing img[src="assets/007Logo.png"] {
+.landing h1 {
+  font-size: 7rem;
+}
+
+.landing header p {
+  font-size: 2rem;
+  margin: 30px 0;
+}
+
+.landing img[src="assets/007-logo.png"] {
   width: 70%;
   margin: 50px 0 20px;
 }
@@ -538,11 +610,6 @@ textarea {
   padding: 15px 20px;
 }
 
-.landing h1 {
-  font-size: 7rem;
-}
-
-.landing header p {
-  font-size: 2rem;
-  margin: 30px 0;
+.landing .hide {
+  display: none;
 }
