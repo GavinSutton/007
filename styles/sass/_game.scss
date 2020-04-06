@@ -194,17 +194,22 @@
 
 @media (max-width: 680px) {
     .game {
+        .game-field {
+            flex: 3;
+        }
+
         .enemy {
             left: 50px;
         }
-
+        
         .user-gun {
             right: 50px;
         }
-
+        
         .user-controls {
             flex-wrap: wrap;
             overflow: auto;
+            flex: 2;
         }
 
         .user-ammo {
@@ -230,7 +235,6 @@
 
     }
 }
-
 
 @media (max-width: 500px) {
     .game {

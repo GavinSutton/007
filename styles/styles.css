@@ -532,6 +532,11 @@ textarea {
 }
 
 @media (max-width: 680px) {
+  .game .game-field {
+    -webkit-box-flex: 3;
+        -ms-flex: 3;
+            flex: 3;
+  }
   .game .enemy {
     left: 50px;
   }
@@ -542,6 +547,9 @@ textarea {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     overflow: auto;
+    -webkit-box-flex: 2;
+        -ms-flex: 2;
+            flex: 2;
   }
   .game .user-ammo {
     -webkit-box-ordinal-group: -1;
