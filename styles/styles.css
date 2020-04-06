@@ -541,6 +541,7 @@ textarea {
   .game .user-controls {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
+    overflow: auto;
   }
   .game .user-ammo {
     -webkit-box-ordinal-group: -1;

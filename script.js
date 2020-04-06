@@ -153,7 +153,7 @@ const myApp = {}
             cpuHealth = cpuHealth - 1;
             myApp.cpuHealthFunction();
         } else if (userChoice === `block` && computerChoice === `shoot`) {
-            $(`h3.user-results`).text(`You blocked`);
+            $(`h3.user-results`).text(`Block:`);
             $(`h4.user-results`).text(`You stopped a shot`);
         } else if (userChoice === `reload` && computerChoice === `shoot`) {
             $(`h3.user-results`).text(`Reload:`);
@@ -165,7 +165,7 @@ const myApp = {}
             $(`h4.user-results`).text(`+1 ammo`);
             // $(`h2.user-results`).text(`Reload: + 1 ammo`);
         } else if (userChoice === `block` && computerChoice !== `shoot`) {
-            $(`h3.user-results`).text(`You blocked`);
+            $(`h3.user-results`).text(`Block`);
         } 
     }
 
