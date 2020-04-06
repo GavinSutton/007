@@ -504,14 +504,14 @@ textarea {
   right: 350px;
 }
 
-.game .badguy {
+.game .enemy {
   position: relative;
   left: 250px;
   overflow: hidden;
 }
 
 @media (max-width: 1060px) {
-  .game .badguy {
+  .game .enemy {
     left: 150px;
   }
   .game .user-gun {
@@ -532,7 +532,7 @@ textarea {
 }
 
 @media (max-width: 680px) {
-  .game .badguy {
+  .game .enemy {
     left: 50px;
   }
   .game .user-gun {
@@ -572,7 +572,7 @@ textarea {
 }
 
 @media (max-width: 500px) {
-  .game .badguy {
+  .game .enemy {
     left: 5px;
   }
   .game .user-gun {

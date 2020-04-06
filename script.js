@@ -1,6 +1,6 @@
-$(document).ready(function () {
+const myApp = {}
 
-    // Typed.js for aesthetics
+    // Typed.js for landing page aesthetics
     var typed = new Typed('.type', {
         strings: [
             'Stop the bad guy. ^1000',
@@ -17,7 +17,7 @@ $(document).ready(function () {
     let cpuHealth = 3;
 
     // userHealthFunction calculates the amount of hearts the user has
-    function userHealthFunction() {
+    myApp.userHealthFunction = function() {
         if ( userHealth === 2) {
             $(`.user-heart-3`).removeClass(`fas`).addClass(`far`)
         }
@@ -42,7 +42,7 @@ $(document).ready(function () {
     }
 
     // cpuHealthFunction lowers the health of the computer when shot, and alerts the user when they have won
-    function cpuHealthFunction() {
+    myApp.cpuHealthFunction = function() {
         if (cpuHealth === 2) {
             $(`.cpu-heart-3`).removeClass(`fas`).addClass(`far`)
         }
@@ -71,7 +71,7 @@ $(document).ready(function () {
     let computerAmmo = 1;
 
     // userAmmoFunction adds one amunition for every "reload" while subtracting one amunition for every "shoot"
-    function userAmmoFunction (choice) {
+    myApp.userAmmoFunction = function(choice) {
         const userChoice = $(choice).attr(`id`);
 
         if ( userChoice === `reload` && userChoice !== 'shoot' ) {
@@ -90,20 +90,18 @@ $(document).ready(function () {
     }
 
     // the enemy function choses between three badguys to face
-    const enemy = function() {
-        const enemyOptions = [`bad-guy-1`, `bad-guy-2`, `bad-guy-3`]
+    myApp.enemy = function() {
+        const enemyOptions = [`enemy-1`, `enemy-2`, `enemy-3`]
         const enemyChoice = random(enemyOptions);
-        console.log(enemyChoice)
-        $(`.badguy`).html(`
-        <img src="assets/${enemyChoice}.png" alt = "">
+        $(`.enemy`).html(`
+        <img src="assets/${enemyChoice}.png" alt = "Image of your enemy.">
         `)   
     }
 
-    // Running the enemy function on page load
-    enemy();
+    
 
     // runComputerChoice has a list of the three choices (shoot, block, reload) that uses the randomize function above to chose between. However, if cpu ammo is at 0, the "shoot" option is shift()ed, and the cpu can only block or reload
-    const runComputerChoice = function() {
+    myApp.runComputerChoice = function() {
         // list of computer choices
         const computerOptions = [`shoot`, `block`, `reload`];
         if (computerAmmo >= 1) {
@@ -117,7 +115,7 @@ $(document).ready(function () {
     }
 
     // computerAmmoFunction adds ammo if runComputerChoice is "reload", and subtracts ammo if runComputerChoice is "shoot" 
-    function computerAmmoFunction() {
+    myApp.computerAmmoFunction = function() {
         if (computerChoice === `reload`) {
             computerAmmo = computerAmmo + 1;
         } else if ( computerChoice === `shoot` && computerAmmo !== 0) {
@@ -127,7 +125,7 @@ $(document).ready(function () {
     }
 
     // runUserChoice describes all the scenarios of what the user chooses vs what the cpu choice is, and runs other functions based off of those choices. 
-    function runUserChoice(choice) {
+    myApp.runUserChoice = function(choice) {
         const userChoice = $(choice).attr(`id`);
         setTimeout(function () {
             $(`h3.user-results`).text(``);
@@ -143,9 +141,9 @@ $(document).ready(function () {
             $(`h3.user-results`).text(`Tie`);
             $(`h4.user-results`).text(`You shot eachother`);
             userHealth = userHealth - 1;
-            userHealthFunction();
+            myApp.userHealthFunction();
             cpuHealth = cpuHealth - 1;
-            cpuHealthFunction();
+            myApp.cpuHealthFunction();
         } else if (userChoice === `shoot` && computerChoice === `block` && userAmmo !== 0) {
             $(`h3.user-results`).text(`Shoot:`);
             $(`h4.user-results`).text(`Enemy blocked shot`);
@@ -153,7 +151,7 @@ $(document).ready(function () {
             $(`h3.user-results`).text(`Shoot:`);
             $(`h4.user-results`).text(`Enemy was hit`);
             cpuHealth = cpuHealth - 1;
-            cpuHealthFunction();
+            myApp.cpuHealthFunction();
         } else if (userChoice === `block` && computerChoice === `shoot`) {
             $(`h3.user-results`).text(`You blocked`);
             $(`h4.user-results`).text(`You stopped a shot`);
@@ -161,7 +159,7 @@ $(document).ready(function () {
             $(`h3.user-results`).text(`Reload:`);
             $(`h4.user-results`).text(`You were hit`);
             userHealth = userHealth - 1;
-            userHealthFunction();
+            myApp.userHealthFunction();
         } else if (userChoice === `reload` && computerChoice !== `shoot`) {
             $(`h3.user-results`).text(`Reload:`);
             $(`h4.user-results`).text(`+1 ammo`);
@@ -172,7 +170,7 @@ $(document).ready(function () {
     }
 
     // runComputerOptions simply displays what the computer chooses so the user knows
-    function runComputerOptions() {
+    myApp.runComputerOptions = function () {
         if (computerChoice === `reload`) {
             $(`h3.cpu-results`).text(`Reload`);
         } else if (computerChoice === `block`) {
@@ -181,15 +179,19 @@ $(document).ready(function () {
             $(`h3.cpu-results`).text(`Shoot`);
         }
     }
-    
+
+myApp.init = function () {
+    // Running the enemy function on page load
+    myApp.enemy();
+
     // This click function activates the game and depending on what is clicked (shoot, reload, block) activates a bunch of other functions. The "this" sends the option to other functions. 
     $(`p.user-choice`).on(`click`, function(e) {
         e.preventDefault();
-        runComputerChoice();
-        computerAmmoFunction(this);
-        runComputerOptions(this);
-        runUserChoice(this);
-        userAmmoFunction(this);
+        myApp.runComputerChoice();
+        myApp.computerAmmoFunction(this);
+        myApp.runComputerOptions(this);
+        myApp.runUserChoice(this);
+        myApp.userAmmoFunction(this);
     });
 
     // This function controls what is displayed on screen. Upon screen load, only the header is displayed, forcing the user to click "accept", which then hides the header and sends the user to the game screen. 
@@ -197,7 +199,10 @@ $(document).ready(function () {
         $(`main`).removeClass(`hide`)
         $(`header`).addClass('hide')
     });
+}
 
+$(document).ready(function () {
+    myApp.init();
 });
 
 
