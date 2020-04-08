@@ -1,7 +1,7 @@
 const myApp = {}
 
     // Typed.js for landing page aesthetics
-    var typed = new Typed('.type', {
+    let typed = new Typed('.type', {
         strings: [
             'Stop the bad guy. ^1000',
             'Save the world. ^1000',

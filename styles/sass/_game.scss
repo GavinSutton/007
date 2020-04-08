@@ -195,7 +195,7 @@
 @media (max-width: 680px) {
     .game {
         .game-field {
-            flex: 3;
+            flex: 2;
         }
 
         .enemy {
@@ -209,7 +209,12 @@
         .user-controls {
             flex-wrap: wrap;
             overflow: auto;
-            flex: 2;
+            flex: 1;
+        }
+
+        .user-controls,
+        .computer-zone {
+            padding: 0;
         }
 
         .user-ammo {
@@ -231,6 +236,13 @@
 
         .computer {
             display: none;
+        }
+
+        .user-ammo, 
+        .computer-ammo, 
+        .user-life-points,
+        .computer-life-points {
+            height: 80px;
         }
 
     }
