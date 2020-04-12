@@ -617,7 +617,12 @@ textarea {
 
 @media screen and (orientation: landscape) and (max-height: 470px) {
   .game p {
-    font-size: 0.8rem;
+    font-size: 1rem;
+  }
+  .game .game-field {
+    -webkit-box-flex: 2;
+        -ms-flex: 2;
+            flex: 2;
   }
   .game .user-controls,
   .game .computer-zone {
@@ -639,7 +644,7 @@ textarea {
   .game .user-life-points,
   .game .computer-life-points {
     width: 150px;
-    height: 50px;
+    height: 70px;
   }
 }
 

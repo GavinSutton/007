@@ -283,7 +283,11 @@ and (max-height: 470px)  {
     .game {
 
         p {
-            font-size: 0.8rem;;
+            font-size: 1rem;;
+        }
+
+        .game-field {
+            flex: 2;
         }
 
         .user-controls,
@@ -309,7 +313,7 @@ and (max-height: 470px)  {
         .user-life-points,
         .computer-life-points {
             width: 150px;
-            height: 50px;
+            height: 70px;
         }
     }
 }
