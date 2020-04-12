@@ -532,13 +532,23 @@ textarea {
 }
 
 @media (max-width: 680px) {
+  .game .enemy {
+    left: 50px;
+  }
   .game .game-field {
     -webkit-box-flex: 2;
         -ms-flex: 2;
             flex: 2;
   }
-  .game .enemy {
-    left: 50px;
+  .game .user-controls,
+  .game .computer-zone {
+    padding: 0;
+  }
+  .game .computer-zone {
+    -webkit-box-flex: 0;
+        -ms-flex: 0;
+            flex: 0;
+    display: -webkit-inline-box;
   }
   .game .user-gun {
     right: 50px;
@@ -550,10 +560,6 @@ textarea {
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
-  }
-  .game .user-controls,
-  .game .computer-zone {
-    padding: 0;
   }
   .game .user-ammo {
     -webkit-box-ordinal-group: -1;
