@@ -279,9 +279,37 @@
 }
 
 @media screen and (orientation:landscape)
-and (min-device-width: 300px) 
-and (max-device-width: 900px) {
+and (max-height: 470px)  {
     .game {
-        height: 100%;
+
+        p {
+            font-size: 0.8rem;;
+        }
+
+        .user-controls,
+        .computer-zone {
+            padding: 20px 0;
+        }
+
+        .fa-heart {
+            font-size: 1rem;
+        }
+
+        p.user-choice,
+        .user-ammo,
+        .computer,
+        .computer-ammo,
+        .user-life-points,
+        .computer-life-points {
+            padding: 5px 10px;
+        }
+
+        .user-ammo, 
+        .computer-ammo, 
+        .user-life-points,
+        .computer-life-points {
+            width: 150px;
+            height: 50px;
+        }
     }
 }

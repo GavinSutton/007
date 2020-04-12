@@ -615,9 +615,31 @@ textarea {
   }
 }
 
-@media screen and (orientation: landscape) and (min-device-width: 300px) and (max-device-width: 900px) {
-  .game {
-    height: 100%;
+@media screen and (orientation: landscape) and (max-height: 470px) {
+  .game p {
+    font-size: 0.8rem;
+  }
+  .game .user-controls,
+  .game .computer-zone {
+    padding: 20px 0;
+  }
+  .game .fa-heart {
+    font-size: 1rem;
+  }
+  .game p.user-choice,
+  .game .user-ammo,
+  .game .computer,
+  .game .computer-ammo,
+  .game .user-life-points,
+  .game .computer-life-points {
+    padding: 5px 10px;
+  }
+  .game .user-ammo,
+  .game .computer-ammo,
+  .game .user-life-points,
+  .game .computer-life-points {
+    width: 150px;
+    height: 50px;
   }
 }
 
@@ -724,7 +746,7 @@ textarea {
   cursor: pointer;
 }
 
-@media screen and (orientation: landscape) and (min-device-width: 300px) and (max-device-width: 900px) {
+@media screen and (orientation: landscape) and (max-height: 470px) {
   .landing header {
     height: 100%;
   }
