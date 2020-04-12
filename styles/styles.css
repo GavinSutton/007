@@ -751,6 +751,15 @@ textarea {
   cursor: pointer;
 }
 
+.landing .subtext p {
+  font-size: 0.6rem;
+  margin: 5px 0;
+}
+
+.landing .subtext {
+  margin: 10px;
+}
+
 @media screen and (orientation: landscape) and (max-height: 470px) {
   .landing header {
     height: 100%;

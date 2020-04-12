@@ -81,6 +81,15 @@
         cursor: pointer;
     }
 
+    .subtext p {
+        font-size: 0.6rem;
+        margin: 5px 0;
+    }
+
+    .subtext {
+        margin: 10px;
+    }
+
 }
 
 @media screen and (orientation:landscape)
