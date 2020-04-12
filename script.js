@@ -91,7 +91,7 @@ const myApp = {}
 
     // the enemy function choses between three badguys to face
     myApp.enemy = function() {
-        const enemyOptions = [`enemy-1`, `enemy-2`, `enemy-3`]
+        const enemyOptions = [`enemy-1`, `enemy-2`]
         const enemyChoice = random(enemyOptions);
         $(`.enemy`).html(`
         <img src="assets/${enemyChoice}.png" alt = "Image of your enemy.">
@@ -198,6 +198,15 @@ myApp.init = function () {
     $(`.accept`).on(`click`, function (e) {
         $(`main`).removeClass(`hide`)
         $(`header`).addClass('hide')
+    });
+
+    // This function toggles the info/instructions on how to play. 
+    $(`.info`).on(`click`, function (e) {
+        $(`.info-popup`).removeClass(`hide`)
+    });
+
+    $(`.return`).on(`click`, function (e) {
+        $(`.info-popup`).addClass(`hide`)
     });
 }
 
