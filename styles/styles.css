@@ -689,7 +689,7 @@ textarea {
   background-color: #FFFFFF;
   border-radius: 20px;
   height: auto;
-  width: 60%;
+  width: 80%;
   -webkit-box-shadow: 2px 2px 4px #000000;
           box-shadow: 2px 2px 4px #000000;
   position: absolute;
@@ -698,7 +698,7 @@ textarea {
 }
 
 .landing .info-popup h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #C4944B;
   font-family: 'Raleway', sans-serif;
   font-weight: 300;
@@ -707,7 +707,7 @@ textarea {
 }
 
 .landing .info-popup p {
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 .landing .return {

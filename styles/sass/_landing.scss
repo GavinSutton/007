@@ -55,7 +55,7 @@
         background-color: $white;
         border-radius: 20px;
         height: auto;
-        width: 60%;
+        width: 80%;
         box-shadow: 2px 2px 4px $black;
         position: absolute;
         overflow: hidden;
@@ -63,14 +63,14 @@
     }
 
     .info-popup h2 {
-        font-size: 2rem;
+        font-size: 1.5rem;
         color: $gold;
         @include font();
         margin-top: 20px;
     }
 
     .info-popup p {
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 
     .return {
