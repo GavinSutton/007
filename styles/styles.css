@@ -615,6 +615,12 @@ textarea {
   }
 }
 
+@media screen and (orientation: landscape) and (min-device-width: 300px) and (max-device-width: 900px) {
+  .game {
+    height: 100%;
+  }
+}
+
 .landing header {
   background: url(../assets/gun-barrell.png);
   background-position: center;
@@ -716,4 +722,10 @@ textarea {
   padding: 15px 20px;
   margin: 10px;
   cursor: pointer;
+}
+
+@media screen and (orientation: landscape) and (min-device-width: 300px) and (max-device-width: 900px) {
+  .landing header {
+    height: 100%;
+  }
 }
